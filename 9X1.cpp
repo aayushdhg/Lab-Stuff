@@ -1,4 +1,5 @@
 #include<iostream>
+#include<iomanip>
 using namespace std;
 
 template <class T, size_t n>
@@ -14,7 +15,10 @@ int main(){
     
     int s[5]={1,2,3,4,5};
     float f[3]={2.34,4.54,42.432};
+    float d[4]={1.232424,4.342444443432435,3.452424,344.34242424};
+    cout<<fixed<<setprecision(8)<<showpoint;
     cout<<"Sum of elements in integer array is "<<sum(s)<<endl;
-    cout<<"Sum of elements in float array is "<<sum(f)<<endl;
+    cout.unsetf(ios::fixed);
+    cout<<"Sum of elements in long double array is "<<setprecision(18)<<sum(d)<<endl;
     return 0;
 }

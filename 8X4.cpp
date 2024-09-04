@@ -3,8 +3,9 @@
 using namespace std;
 class Shape {
 public:
-    virtual void draw() = 0;  
-    virtual ~Shape() {} 
+    virtual void draw(){};  
+    //virtual ~Shape() {} 
+    //void display()
 };
 class Circle : public Shape {
 public:
@@ -35,7 +36,7 @@ int main() {
     cout<<"\nPerforming downcasting"<<endl;
 
     // shapePtr=dynamic_cast<Circle*>(shapePtr);
-    // if(shapePtr){ 
+    // if(!shapePtr){ 
     //     shapePtr->draw();
     //     cout << "Type of shape is: " << typeid(*shapePtr).name() << endl;
     //     cout << "Type of pointer is: "<<typeid(shapePtr).name()<<endl;    //still gives P5Shape apparently cause typeid shows the static type of the pointer variable, type of pointer variable itself declared at compile time whose static type remians Shape* throughout the program
@@ -54,7 +55,10 @@ int main() {
         cout<<"Shape could not become a rectangle"<<endl;
     }
 
-   // delete shapePtr;  
+    delete shapePtr;  
+
+    //shapePtr->draw();
+
     cout<<endl;
 
     Rectangle* rectanglePtr=new Rectangle();
@@ -62,21 +66,26 @@ int main() {
     cout << "Type of shape is: " << typeid(*rectanglePtr).name() << endl;
     cout<< "Type of pointer is: "<< typeid(rectanglePtr).name()<<endl;
 
+     //delete rectanglePtr;  
+
+
     shapePtr=dynamic_cast<Shape*>(rectanglePtr);
+
+    //delete rectanglePtr; 
+
     cout<<"\nPerforming upcasting"<<endl;
-    if(shapePtr){ 
+
         shapePtr->draw();
         cout << "Type of shape is: " << typeid(*shapePtr).name() << endl;
         cout << "Type of pointer is: "<<typeid(shapePtr).name()<<endl;
-    }
-    else{
-        cout<<"Shape could not become a rectangle"<<endl;
-    }
 
     cout<<endl;
+
+
     Shape* shape = new Triangle();
     shape->draw(); 
     cout << "Type of shape is: " << typeid(*shape).name() << endl;
+    cout << "Type of pointer is: "<<typeid(shape).name()<<endl;
 
     if (Circle* circle = dynamic_cast<Circle*>(shape)) {
         cout << "Shape is a Circle." << endl;
@@ -88,7 +97,6 @@ int main() {
         cout << "Unknown shape!" << endl;
     }
 
-   // delete rectanglePtr;  
-
+  
     return 0;
 }

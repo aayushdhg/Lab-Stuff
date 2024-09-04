@@ -67,5 +67,8 @@ int main()
     c.display();
     r.display();
     t.display();
+
+    // shape s;
+    // s.display();
     return 0;
 }
